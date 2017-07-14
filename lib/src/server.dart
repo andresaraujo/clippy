@@ -23,15 +23,28 @@ class MacClipboard implements Clipboard {
 class LinuxClipboard implements Clipboard {
   @override
   Future<Null> write(covariant String input) async {
-    final process = await Process.start('xsel', ['--clipboard', '--input'], runInShell: true);
-    process.stdin.write(input);
-    process.stdin.close();
+    try {
+      final process = await Process.start('xsel', ['--clipboard', '--input'],
+          runInShell: true);
+      process.stdin.write(input);
+      process.stdin.close();
+    } catch (e) {
+      print(
+          'Clippy needs [xsel] in Linux, please install it. Nothing was written to clipboard');
+    }
   }
 
   @override
   Future<String> read() async {
-    final process = await Process.start('xsel', ['--clipboard', '--output'], runInShell: true);
+    try {
+      final process = await Process.start('xsel', ['--clipboard', '--output'],
+          runInShell: true);
 
-    return await process.stdout.transform(UTF8.decoder).first;
+      return await process.stdout.transform(UTF8.decoder).first;
+    } catch (e) {
+      print(
+          'Clippy needs [xsel] in Linux, please install it. Nothing was read from clipboard');
+      return '';
+    }
   }
 }
