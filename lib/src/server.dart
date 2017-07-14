@@ -19,3 +19,19 @@ class MacClipboard implements Clipboard {
     return await process.stdout.transform(UTF8.decoder).first;
   }
 }
+
+class LinuxClipboard implements Clipboard {
+  @override
+  Future<Null> write(covariant String input) async {
+    final process = await Process.start('xsel', ['--clipboard', '--input'], runInShell: true);
+    process.stdin.write(input);
+    process.stdin.close();
+  }
+
+  @override
+  Future<String> read() async {
+    final process = await Process.start('xsel', ['--clipboard', '--output'], runInShell: true);
+
+    return await process.stdout.transform(UTF8.decoder).first;
+  }
+}
