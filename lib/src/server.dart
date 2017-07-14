@@ -36,15 +36,9 @@ class LinuxClipboard implements Clipboard {
 
   @override
   Future<String> read() async {
-    try {
-      final process = await Process.start('xsel', ['--clipboard', '--output'],
-          runInShell: true);
+    final process = await Process.start('xsel', ['--clipboard', '--output'],
+        runInShell: true);
 
-      return await process.stdout.transform(UTF8.decoder).first;
-    } catch (e) {
-      print(
-          'Clippy needs [xsel] in Linux, please install it. Nothing was read from clipboard');
-      return '';
-    }
+    return await process.stdout.transform(UTF8.decoder).first;
   }
 }
