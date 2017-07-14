@@ -7,6 +7,8 @@ import 'package:clippy/src/server.dart';
 Clipboard _platform() {
   if (Platform.isMacOS) {
     return new MacClipboard();
+  } else if (Platform.isWindows) {
+    return new LinuxClipboard();
   } else {
     return new LinuxClipboard();
   }
