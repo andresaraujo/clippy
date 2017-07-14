@@ -8,7 +8,7 @@ Clipboard _platform() {
   if (Platform.isMacOS) {
     return new MacClipboard();
   } else if (Platform.isWindows) {
-    return new LinuxClipboard();
+    return new WindowsClipboard();
   } else {
     return new LinuxClipboard();
   }
