@@ -1,0 +1,8 @@
+os:
+  - osx
+language: dart
+sudo: false
+dart:
+  - stable
+dart_task:
+  - test: --platform vm
