@@ -8,6 +8,5 @@ A library to access the clipboard (copy/paste) for server and browser
 
 WIP:
 
-- [ ] Windows support
+- [ ] Test missing binary in linux
 - [ ] Update readme add docs
-- [ ] Set appveyor CI
