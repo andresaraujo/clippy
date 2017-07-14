@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:clippy/src/clipboard.dart';
 
 class MacClipboard implements Clipboard {
-
   @override
   Future<Null> write(covariant String input) async {
     final process = await Process.start('pbcopy', [], runInShell: true);
@@ -17,8 +16,6 @@ class MacClipboard implements Clipboard {
   Future<String> read() async {
     final process = await Process.start('pbpaste', [], runInShell: true);
 
-    return await process.stdout
-        .transform(UTF8.decoder)
-        .first;
+    return await process.stdout.transform(UTF8.decoder).first;
   }
 }

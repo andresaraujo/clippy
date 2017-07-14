@@ -5,12 +5,12 @@ import 'package:clippy/src/browser.dart';
 final clipboard = new BrowserClipboard();
 
 Future<Null> write([input]) async {
-  if(input is Element) {
+  if (input is Element) {
     await clipboard.write(input);
   } else if (input is String) {
     await _writeText(input);
   } else {
-    await  clipboard.write();
+    await clipboard.write();
   }
 }
 
@@ -36,7 +36,7 @@ TextAreaElement _createFakeElement(String text) {
 
   // Move element out of screen horizontally
   fakeElem.style.position = 'absolute';
-  if(isRtl) {
+  if (isRtl) {
     fakeElem.style.right = '-9999px';
   } else {
     fakeElem.style.left = '-9999px';
