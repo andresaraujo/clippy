@@ -1,5 +1,7 @@
 _**Clippy —** Access system clipboard in Dart (Server&Browser)_
 
+
+[![Pub](https://img.shields.io/pub/v/clippy.svg?style=flat-square)](https://pub.dartlang.org/packages/clippy)
 [![Build Status](https://travis-ci.org/andresaraujo/clippy.svg?branch=master)](https://travis-ci.org/andresaraujo/clippy)
 [![Build status](https://ci.appveyor.com/api/projects/status/ufiu8o0wvugr149b?svg=true)](https://ci.appveyor.com/project/andresaraujo/clippy)
 
