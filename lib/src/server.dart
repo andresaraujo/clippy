@@ -50,16 +50,14 @@ final pastePath = path.join(path.current, 'lib/src/backends/windows/paste.exe');
 class WindowsClipboard implements Clipboard {
   @override
   Future<Null> write(covariant String input) async {
-    final process = await Process.start(copyPath, [],
-        runInShell: true);
+    final process = await Process.start(copyPath, [], runInShell: true);
     process.stdin.write(input);
     process.stdin.close();
   }
 
   @override
   Future<String> read() async {
-    final process = await Process.start(pastePath, [],
-        runInShell: true);
+    final process = await Process.start(pastePath, [], runInShell: true);
 
     return await process.stdout.transform(UTF8.decoder).first;
   }
