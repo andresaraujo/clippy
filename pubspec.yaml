@@ -1,6 +1,6 @@
 name: clippy
 description: Access system clipboard in Dart (Server & Browser).
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/andresaraujo/clippy
 author: Andres Araujo <a.araujo.azua@gmail.com>
 

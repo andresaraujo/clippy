@@ -4,13 +4,13 @@ import 'package:clippy/src/browser.dart';
 
 final clipboard = new BrowserClipboard();
 
-Future<Null> write([input]) async {
+Future<bool> write([input]) async {
   if (input is Element) {
-    await clipboard.write(input);
+    return await clipboard.write(input);
   } else if (input is String) {
-    await _writeText(input);
+    return await _writeText(input);
   } else {
-    await clipboard.write();
+    return await clipboard.write();
   }
 }
 
