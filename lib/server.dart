@@ -14,5 +14,5 @@ Clipboard _platform() {
   }
 }
 
-Future<Null> write(String input) => _platform().write(input);
+Future<bool> write(String input) => _platform().write(input);
 Future<String> read() => _platform().read();

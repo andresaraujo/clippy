@@ -5,15 +5,16 @@ import 'package:clippy/src/clipboard.dart';
 
 class BrowserClipboard implements Clipboard {
   @override
-  Future<Null> write([covariant Element element]) async {
+  Future<bool> write([covariant Element element]) async {
     if (element != null) {
       selectText(element);
     }
-    document.execCommand('copy');
+    var result = document.execCommand('copy');
 
     if (element != null) {
       window.getSelection().removeAllRanges();
     }
+    return result;
   }
 
   @override
