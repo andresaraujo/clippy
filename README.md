@@ -1,4 +1,4 @@
-_**Clippy —** Access system clipboard in Dart (Server&Browser)_
+_**Clippy —** Access system clipboard in Dart (Server & Browser)_
 
 
 [![Pub](https://img.shields.io/pub/v/clippy.svg?style=flat-square)](https://pub.dartlang.org/packages/clippy)
@@ -14,7 +14,7 @@ Add `clippy` to dependencies/dev_dependencies in in your pubspec.yaml
 
 ### Usage
 
-##### Server
+#### Server
 In the server Clippy supports writing and reading from the clipboard. It uses system tools for this:
 - On linux uses `xsel` (Install if needed)
 - On Mac uses `pbcopy`/`pbpaste`
@@ -32,9 +32,9 @@ main() async {
 }
 ```
 
-See [example](/example/server)
+See [example/server](/example/server)
 
-##### Browser
+#### Browser
 
 In the browser Clippy supports writing and listening to paste events.
 
@@ -58,8 +58,4 @@ main() async {
 }
 ```
 
-See [example](/example/browser)
-
-TODO:
-
-- [ ] Test missing binary in linux
+See [example/web](/example/web)
