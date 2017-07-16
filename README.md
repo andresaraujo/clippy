@@ -32,7 +32,7 @@ main() async {
 }
 ```
 
-See [example](/example/server)
+See [example/server](/example/server)
 
 #### Browser
 
@@ -58,4 +58,4 @@ main() async {
 }
 ```
 
-See [example](/example/browser)
+See [example/web](/example/web)
