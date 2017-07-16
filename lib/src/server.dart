@@ -84,8 +84,6 @@ class WindowsClipboard implements Clipboard {
     try {
       await process.stdin.close();
     } catch (e) {
-      print(
-          'Clippy needs [xsel] in Linux, please install it. Nothing was written to clipboard');
       return false;
     }
 
