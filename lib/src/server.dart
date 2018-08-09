@@ -9,7 +9,7 @@ class MacClipboard implements Clipboard {
   @override
   Future<bool> write(covariant String input) async {
     final process = await Process.start('pbcopy', [], runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
     process.stdin.write(input);
 
     try {
@@ -24,9 +24,9 @@ class MacClipboard implements Clipboard {
   @override
   Future<String> read() async {
     final process = await Process.start('pbpaste', [], runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
 
-    final stdout = process.stdout.transform(UTF8.decoder);
+    final stdout = process.stdout.transform(utf8.decoder);
 
     try {
       return await stdout.first;
@@ -41,7 +41,7 @@ class LinuxClipboard implements Clipboard {
   Future<bool> write(covariant String input) async {
     final process = await Process.start('xsel', ['--clipboard', '--input'],
         runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
     process.stdin.write(input);
 
     try {
@@ -59,9 +59,9 @@ class LinuxClipboard implements Clipboard {
   Future<String> read() async {
     final process = await Process.start('xsel', ['--clipboard', '--output'],
         runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
 
-    final stdout = process.stdout.transform(UTF8.decoder);
+    final stdout = process.stdout.transform(utf8.decoder);
 
     try {
       return await stdout.first;
@@ -78,7 +78,7 @@ class WindowsClipboard implements Clipboard {
   @override
   Future<bool> write(covariant String input) async {
     final process = await Process.start(winCopyPath, [], runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
     process.stdin.write(input);
 
     try {
@@ -93,9 +93,9 @@ class WindowsClipboard implements Clipboard {
   @override
   Future<String> read() async {
     final process = await Process.start(winPastePath, [], runInShell: true);
-    process.stderr.transform(UTF8.decoder).listen(print);
+    process.stderr.transform(utf8.decoder).listen(print);
 
-    final stdout = process.stdout.transform(UTF8.decoder);
+    final stdout = process.stdout.transform(utf8.decoder);
 
     try {
       return await stdout.first;

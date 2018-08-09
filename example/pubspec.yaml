@@ -11,4 +11,6 @@ dependencies:
 
 dev_dependencies:
   test: ^0.12.0
-  browser: any
+  build_runner: ^0.10.0
+  build_test: ^0.10.2
+  build_web_compilers: ^0.4.0
