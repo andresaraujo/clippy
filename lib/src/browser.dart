@@ -5,14 +5,14 @@ import 'package:clippy/src/clipboard.dart';
 
 class BrowserClipboard implements Clipboard {
   @override
-  Future<bool> write([covariant Element element]) async {
+  Future<bool> write([covariant Element? element]) async {
     if (element != null) {
       selectText(element);
     }
     var result = document.execCommand('copy');
 
     if (element != null) {
-      window.getSelection().removeAllRanges();
+      window.getSelection()?.removeAllRanges();
     }
     return result;
   }
@@ -27,7 +27,7 @@ class BrowserClipboard implements Clipboard {
 }
 
 String _textConverter(ClipboardEvent input) {
-  return input.clipboardData.getData('text/plain');
+  return input.clipboardData?.getData('text/plain') ?? "";
 }
 
 selectText(Element element) {
@@ -35,7 +35,7 @@ selectText(Element element) {
 
   if (element is SelectElement) {
     element.focus();
-    selectedText = element.value;
+    selectedText = element.value ?? '';
   } else if (element is InputElement) {
     final isReadOnly = element.getAttribute('readonly') != null;
 
@@ -44,13 +44,13 @@ selectText(Element element) {
     }
 
     element.select();
-    element.setSelectionRange(0, element.value.length);
+    element.setSelectionRange(0, element.value?.length ?? 0);
 
     if (!isReadOnly) {
       element.attributes.remove('readonly');
     }
 
-    selectedText = element.value;
+    selectedText = element.value ?? '';
   } else if (element is TextAreaElement) {
     final isReadOnly = element.getAttribute('readonly') != null;
 
@@ -59,13 +59,13 @@ selectText(Element element) {
     }
 
     element.select();
-    element.setSelectionRange(0, element.value.length);
+    element.setSelectionRange(0, element.value?.length ?? 0);
 
     if (!isReadOnly) {
       element.attributes.remove('readonly');
     }
 
-    selectedText = element.value;
+    selectedText = element.value ?? '';
   } else {
     if (element.getAttribute('contenteditable') != null) {
       element.focus();
@@ -75,8 +75,8 @@ selectText(Element element) {
     var range = document.createRange();
 
     range.selectNodeContents(element);
-    selection.removeAllRanges();
-    selection.addRange(range);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
 
     selectedText = selection.toString();
   }
